@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,74 @@
     <link rel="stylesheet" href="./style.css">
     <title>Localstorage</title>
 </head>
+
 <body>
     <h1></h1>
-    <input id ="myInput1" type="text">
-    <input id ="myInput2" type="text">
-    <button id ="myButton" onclick="ajouter()" >Ajouter</button>
+    <input id="myInput1" type="text">
+    <input id="myInput2" type="text">
+    <button id="myButton1" onclick="push ()">Save</button>
+    <button id="myButton2" onclick="erase ()">Clear</button>
+
+    <h2>Liste</h2>
+    <ul id="myList"></ul>
 
 
     <script>
 
-        
+        // localStorage.setItem("prenom", "dany");
+        // console.log(localStorage);
+
+        // localStorage.getItem("prenom");
+
+        // let local = localStorage.getItem("prenom");
+        // let in1 = document.getElementById("myInput1").value;
+
+
+        function push() {
+            let in1 = document.getElementById("myInput1").value;
+            let in2 = myInput2.value; // Pareil que la ligne 31
+            console.log(in1, in2);
+            localStorage.setItem(in1, in2)
+        };
+        // for (i=0; i<localStorage.length; i++){
+
+        //     let keyValue = (localStorage.key(i)) + " " + localStorage.getItem(localStorage.key(i))
+        //     console.log(keyValue)
+        // }
+
+        creation()
+
+        function creation() {
+            for (i = 0; i < localStorage.length; i++) {
+                let keyValue = (localStorage.key(i)) + " " + localStorage.getItem(localStorage.key(i))
+                console.log(keyValue);
+
+                let myLi = document.createElement("li");
+                myLi.innerHTML = keyValue;
+                document.getElementById("myList").appendChild(myLi);
+            }
+        }
+
+        function erase() {
+                localStorage.clear()
+                while (ul.firstChild) {
+                    ul.removeChild(ul.firstChild)
+            }
+        }
+
+        // removeItem()
+
+
+
+
+
+
+
+
+
+
+        // document.getElementById("myInput1").value = localStorage.getItem("myInput1");
     </script>
 </body>
+
 </html>
